@@ -1,0 +1,16 @@
+{
+  "name": "mkit_entry_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/peteriv9606/mk-it-entry.git",
+  "author": "Petar Ivanov <peteriv9606@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "install-all": "yarn install && cd frontend && yarn install && cd.. && cd backend && yarn install",
+    "start": "concurrently --kill-others-on-fail \"cd backend && yarn dev\" \"cd frontend && yarn dev\""
+
+  },
+  "dependencies": {
+    "concurrently": "^6.3.0"
+  }
+}

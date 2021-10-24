@@ -36,3 +36,8 @@
 # backend
 /backend/node_modules
 /backend/.env
+
+# root
+
+node_modules
+/node_modules
