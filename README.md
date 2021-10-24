@@ -1,5 +1,17 @@
 ﻿# mk-it-entry
 
+Edit: Added scripts for easy-install-and-run
+
+In main directory:
+```
+yarn install-all
+```
+After installation is complete:
+```
+yarn start
+```
+
+
 ## FRONTEND
 
 This is a [Next.js](https://nextjs.org/) project (Part1).
