@@ -1,0 +1,22 @@
+.Wrapper {
+  min-height: inherit;
+  background: rgb(128,179,255);
+  background: radial-gradient(circle, rgba(128,179,255,1) 0%, rgba(0,103,255,1) 100%);
+}
+.Inner {
+  min-height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  >form{
+      margin: 20px 0;
+      width: 100%;
+      background-color: #fff;
+      @media (min-width:768px){
+          width: 50%;
+      }
+      @media (min-width:768px){
+          width: 35%;
+      }
+  }
+}

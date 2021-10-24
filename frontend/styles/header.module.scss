@@ -1,0 +1,68 @@
+.Wrapper{
+  background-color: #FFF;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.Inner{
+  min-height: 64px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: rgba(0,0,0, 0.1); */
+  >a{
+      /* LOGO */
+      display:flex;
+      align-items: baseline;
+      text-decoration: none;
+      color: black;
+      font-weight: 700;
+      font-size: 20px;
+      
+      >span{
+          font-weight: 800;
+          font-size: 22px;
+          background-color: #ff9800;
+          border-radius: 6px;
+          padding: 3px 8px;
+          margin-right: 3px;
+          color: #fff;
+      }
+  }
+}
+
+.LinkContainer{
+  min-width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  a{
+      outline: none;
+      font-weight: 700;
+      font-size: 20px;
+      color: rgb(150, 150, 150);
+      text-decoration: none;
+      transition: 0.3s;
+  }
+  a:hover{
+      color: #000;
+      transition: 0.3s;
+  }
+  a.Button{
+      margin-right: 10px;
+      margin-top: 0 !important;
+      padding: 6px 10px;
+      color: #FFF;
+      font-weight: 700;
+      font-size: 20px;
+  }
+  button.Button{
+      margin-top: 0;
+      font-size: 18px;
+      padding: 6px 10px;
+      font-weight: 700;
+      background-color: #bbb;
+      
+  }
+}

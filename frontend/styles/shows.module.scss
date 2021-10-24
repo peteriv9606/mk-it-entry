@@ -1,0 +1,28 @@
+.Inner {
+  display: flex;
+  flex-direction: column;
+  > h1 {
+    font-size: 32px;
+    font-weight: 700;
+    align-self: center;
+  }
+  >input{
+    margin: 10px auto;
+    padding: 5px 10px;
+    width: 75%;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  >input::placeholder{
+    font-weight: 400;
+  }
+}
+
+.InfiniteScroll {
+  > div > div {
+    overflow: hidden !important;
+  }
+}
+

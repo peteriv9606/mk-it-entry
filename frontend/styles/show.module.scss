@@ -1,0 +1,56 @@
+.Show{
+  margin: 20px 0;
+  display: flex;
+  column-gap: 20px;
+  >a{
+    width: 20%;
+    overflow: hidden;
+    height: auto;
+    object-fit: contain;
+  }
+  >div{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    >a{
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: black;
+    }
+    >p:nth-of-type(1){
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    >span{
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-style: italic;
+      text-align: justify;
+    }
+    >div{
+      // actions
+      height: -webkit-fill-available;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      >a{
+        width: fit-content;
+      }
+      >button{
+        padding: 5px 10px;
+        width:fit-content;
+        border-radius: 6px;
+        background-color: transparent;
+        font-size: 18px;
+      }
+      button.Add{
+        border: 1px solid rgb(171, 255, 74);
+      }
+      button.Rmv{
+        border: 1px solid rgb(255, 74, 74);
+      }
+    }
+  }
+}

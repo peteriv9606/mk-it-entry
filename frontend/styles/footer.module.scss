@@ -1,0 +1,24 @@
+.Wrapper{
+  background-color: #FFF;
+  position:relative;
+}
+.Wrapper::before{
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  //transform: translateY(-50%);
+  height: 10px;
+  background-color: rgba(200,200,200,0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+.Inner{
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
