@@ -2,7 +2,7 @@
 
 ## FRONTEND
 
-This is a [Next.js](https://nextjs.org/) project (Part1). [Back-End is here](https://github.com/peteriv9606/mk-entry-be)
+This is a [Next.js](https://nextjs.org/) project (Part1).
 
 ## Getting Started
 
@@ -29,7 +29,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## BACKEND:
  
-This is an Express.js Backend project (Part2). [Front-End](https://github.com/peteriv9606/mkit-entry-fe)
+This is an Express.js Backend project (Part2).
 
 ## Getting Started
 
@@ -57,4 +57,5 @@ Then, run server using:
 yarn dev
 ```
 
+API Calls are made on [http://localhost:4000/api/](http://localhost:4000/api/)
 
