@@ -18,6 +18,7 @@ export default class Layout extends React.Component {
         <main>{this.props.children}</main>
         <Footer />
         <ToastContainer
+          limit={3}
           position="top-center"
           autoClose={2500}
           hideProgressBar={true}

@@ -1,0 +1,33 @@
+.Inner {
+  display: flex;
+  flex-direction: column;
+
+  >h1{
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    
+  }
+}
+
+.Favourites_wrapper {
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  row-gap: 20px;
+}
+.Fav{
+  display: flex;
+  flex: 0 0 25%;
+  justify-content: center;
+  >a{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    transition:0.3s;
+  }
+  >a:hover{
+    transition:0.3s;
+    transform: scale(1.05);
+  }
+}

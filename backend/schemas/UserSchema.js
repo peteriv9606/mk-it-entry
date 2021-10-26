@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const ShowSchema = require("./ShowSchema");
 const Schema = mongoose.Schema;
 
 const UserSchema = Schema({
@@ -8,7 +9,7 @@ const UserSchema = Schema({
   first_name: { type: String, default: ""},
   last_name: { type: String, default: ""},
   created_at: { type: Date, default: Date.now },
-  fav_shows: { type: Array, default: [], required: false}
+  fav_shows: { type: [ShowSchema], default: [], required: false}
 });
 
 module.exports = UserSchema

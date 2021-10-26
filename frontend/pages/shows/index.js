@@ -55,8 +55,15 @@ export default function Shows({ ssr_shows }) {
   }, [debouncedSearch])
 
   useEffect(async () => {
-    setUser(await getUser())
+    const u = await getUser()
+    if(u && !u.message?.includes("credentials")){
+      setUser(u)
+    }
   }, [])
+  
+  useEffect(() => {
+    console.log("USER: ", user)
+  }, [user])
 
   return (
     <Layout>
@@ -96,6 +103,7 @@ export default function Shows({ ssr_shows }) {
                       show={show}
                       user={user}
                       setUser={setUser}
+                      isSingle={false}
                       />
                     )
                   }
