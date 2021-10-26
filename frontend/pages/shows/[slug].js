@@ -64,8 +64,9 @@ export default function SingleShow({ ssr_show }) {
       `Successfully gave ${data.name} a rating of ${value}!`
       : `Successfully cleared ${data.name}'s rating!`
       ), setRating(value))
+    }else{
+      toast.error("Please log in to rate")
     }
-    toast.error("Please log in to rate")
   }
 
   useEffect(() => {
