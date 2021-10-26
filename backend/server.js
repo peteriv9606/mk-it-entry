@@ -9,7 +9,8 @@ const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI
 
 // Middleware
-app.use(cors());
+
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -34,6 +35,10 @@ app.use('/api/users', users)
 app.use('/api/auth', auth)
 app.use('/api/shows', shows)
 app.use('/api/favourites', favourites)
+
+
+
+
 
 //API
 /* require("./routes/login")(app);

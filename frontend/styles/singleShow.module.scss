@@ -1,6 +1,26 @@
 .Inner{
   display: flex;
   flex-direction: column;
+
+  >h1{
+    font-size: 24px;
+    font-weight: 700;
+  }
+  @media(min-width:768px){
+    >h1{
+      font-size: 26px
+    }
+  }
+  @media(min-width:1024px){
+    >h1{
+      font-size: 28px
+    }
+  }
+  @media(min-width:1440px){
+    >h1{
+      font-size: 30px
+    }
+  }
 }
 .Rating_wrapper{
   margin: 20px 0;

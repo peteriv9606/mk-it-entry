@@ -28,7 +28,7 @@ export default function FavouritesBlock() {
       const favs_data = await fetchWithToken(process.env.apiUrl + `favourites/${u.username}/paginate`).then(res => res.json())
       setUser(u)
       setFavs(favs_data.results)
-    } 
+    }
 
   }, [])
 
@@ -42,14 +42,15 @@ export default function FavouritesBlock() {
             user ? (
               favs?.length === 0 ?
                 <div className={styles.No_favs}>
-                  <p>Looks like you don't have any favourites yet!</p>
-                  <p><a href={"/shows"}>Explore shows</a> and add them to your favourites' list.</p>
+                  <h2>Looks like you don't have any favourites yet!</h2>
+                  <p>
+                    <a href={"/shows"}>Explore shows</a> and add them to your favourites' list.
+                  </p>
                 </div>
                 :
                 <div className={styles.Fav_carousel}>
-                  <p>Swipe through your collection - click for details</p>
+                  <h2>Swipe through your collection - click for details</h2>
                   <div>
-
                     <Swiper
                       spaceBetween={40}
                       slidesPerView={3}
@@ -66,14 +67,15 @@ export default function FavouritesBlock() {
                     </Swiper>
                   </div>
                   <p>Not seeing your favourite show?</p>
-                  <a href={'/favourites'} className={"Button"}>View all favourites</a>
-                  <p>or</p>
-                  <p>Explore our <a href={'/shows'}>shows section</a> and expand your collection.</p>
-                </div>
-
-            ) : <div className={styles.Not_logged}>
-              <p>You need to be <a href={'/login'}>logged in</a> in order to view or add shows to your favourites list</p>
-            </div>
+                  <div className={styles.Carousel_actions}>
+                    <a href={'/favourites'} className={"Button"}>View all of your favourites</a>
+                    <a href={'/shows'} className={"Button"}>Explore our shows collection</a>
+                  </div>
+                </div>)
+              :
+              <div className={styles.Not_logged}>
+                <p>You need to be <a href={'/login'}>logged in</a> in order to view or add shows to your favourites list</p>
+              </div>
           }
 
         </div>

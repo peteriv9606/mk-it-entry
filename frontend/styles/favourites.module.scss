@@ -6,7 +6,21 @@
     margin-top: 10px;
     font-size: 24px;
     font-weight: 700;
-    
+  }
+  @media(min-width:768px){
+    >h1{
+      font-size: 26px
+    }
+  }
+  @media(min-width:1024px){
+    >h1{
+      font-size: 28px
+    }
+  }
+  @media(min-width:1440px){
+    >h1{
+      font-size: 30px
+    }
   }
 }
 
@@ -17,10 +31,15 @@
   align-items: center;
   justify-content: flex-start;
   row-gap: 20px;
+
+  @media (min-width:768px) {
+    justify-content: space-around;
+  }
+
 }
 .Fav{
   display: flex;
-  flex: 0 0 25%;
+  flex: 0 0 100%;
   justify-content: center;
   >a{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -29,5 +48,14 @@
   >a:hover{
     transition:0.3s;
     transform: scale(1.05);
+  }
+  @media (min-width:768px){
+    flex: 0 0 30%;
+  }
+  @media (min-width:1024px){
+    flex: 0 0 20%;
+  }
+  @media (min-width: 1440px){
+    flex: 0 0 25%;
   }
 }

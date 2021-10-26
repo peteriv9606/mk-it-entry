@@ -26,8 +26,8 @@ router.post("/register", urlEncodedParser, async (req, res) => {
     )
   }
 
-  if (!(req.body.email).match(new RegExp(/^[A-Za-z0-9]*@[A-Za-z0-9]*\.[A-Za-z0-9]+$/))) {
-    return res.status(400).json({ email: "Email format invalid ( expected: example@mail.com )" })
+  if (!(req.body.email).match(new RegExp(/^[A-Za-z0-9\-\_\.\$\&]*@[A-Za-z0-9]*\.[A-Za-z]{2,}(?:\.[A-Za-z]{2,})?$/))) {
+    return res.status(400).json([{ email: "Email format invalid ( expected: example@mail.com )" }])
   }
 
   if (await User.findOne({ username: req.body.username }) !== null) {

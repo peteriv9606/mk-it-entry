@@ -13,9 +13,7 @@ export default function Hero() {
             <h1>Welcome to your personal Movie Library</h1>
             <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio fuga ut quibusdam magni iste praesentium expedita adipisci consectetur, quasi, minus nulla! Et, laboriosam libero excepturi exercitationem id nulla sequi expedita.</h2>
           </div>
-          <div className={styles.Actions}>
-            <a href={'/shows'} className={"Button"}>Explore shows</a>
-          </div>
+          <a href={'/shows'} className={"Button"}>Explore shows</a>
         </div>
       </div>
     </section>

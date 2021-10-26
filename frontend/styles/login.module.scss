@@ -10,13 +10,13 @@
   justify-content: center;
   align-items: center;
   >form{
-      width: 100%;
+      margin: 20px 0;
       background-color: #fff;
       @media (min-width:768px){
           width: 50%;
       }
-      @media (min-width:768px){
-          width: 35%;
+      @media (min-width:1024px){
+          width: 40%;
       }
   }
 }
