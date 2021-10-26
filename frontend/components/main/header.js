@@ -1,21 +1,28 @@
 import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 import router from "next/router";
 import { useEffect, useState } from "react";
 import styles from "../../styles/header.module.scss"
-import { getUser } from "./auth";
 
 function Header() {
-  const [username, setUsername] = useState()
+  const [user, setUser] = useState()
   const route_need_auth = [
-    '/account/[slug]',
+    '/favourites',
   ]
 
   useEffect(async () => {
-    let usr = await getUser()
-    usr !== undefined
-      ? setUsername(usr.username)
-      : route_need_auth.includes(router.pathname) ? router.push('/login') : ""
-
+    let usr = ''
+    try {
+      usr = jwtDecode(Cookies.get('access')).username
+      setUser(usr)
+    } catch (err) {
+      // cant decode.. not a valid cookie / missing / not logged in
+      Cookies.remove('access')
+      Cookies.remove('refresh')
+      if(route_need_auth.includes(router.pathname)){
+        router.push('/login')
+      }
+    }
   }, [])
 
   const handleLogout = () => {
@@ -30,13 +37,15 @@ function Header() {
           <a href="/">M-Lib.</a>
           <div className={styles.LinkContainer}>
 
-            {username != undefined ?
+            {user != undefined ?
               <>
-                <a className={`Button ${styles.Button}`} href={`/account`}>Hello, {username}!</a>
+                <a className={`Button ${styles.Button}`} href={`/shows`}>Shows</a>
+                <a className={`Button ${styles.Button}`} href={`/favourites`}>Favourites</a>
                 <button className={`Button ${styles.Button}`} onClick={handleLogout}>Logout</button>
               </>
               :
               <>
+                <a className={`Button ${styles.Button}`} href={`/shows`}>Shows</a>
                 <a href="/login">Login</a>
                 <a href="/register">Register</a>
               </>}

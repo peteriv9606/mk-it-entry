@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from "../styles/register.module.scss"
 import Cookies from 'js-cookie'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { merge } from 'lodash'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
@@ -10,6 +10,7 @@ import Loader from '../components/main/loader'
 
 export default function Register() {
     const router = useRouter()
+    const fname_ref = useRef()
     const [formError, setFormError] = useState({})
     const [isLoading, setIsLoading] = useState(false)
     const [userData, setUserData] = useState({
@@ -68,12 +69,11 @@ export default function Register() {
                 res.json().then(res => {
                     setIsLoading(false)
                     let err = {}
-                    if (res?.email) {
-                        err = merge(err, { "email": res.email })
-                    }
-                    if (res?.username) {
-                        err = merge(err, { "username": res.username })
-                    }
+                    res.map(error => {
+                        Object.entries(error).forEach(([key, value]) => {
+                            err = merge(err, { [key]: value })
+                        })
+                    })
                     if (err) {
                         setFormError(err)
                     }
@@ -81,7 +81,7 @@ export default function Register() {
             } else {
                 // no errors go to login page
                 setIsLoading(false)
-                toast.success("Registration Successful! Redirecting to login screen.", {hideProgressBar:false})
+                toast.success("Registration Successful! Redirecting to login screen.", { hideProgressBar: false })
                 setTimeout(() => {
                     Cookies.set('access', res.access)
                     Cookies.set('refresh', res.refresh)
@@ -90,6 +90,10 @@ export default function Register() {
             }
         }
     }
+
+    useEffect(() => {
+        fname_ref.current.focus()
+    }, [])
 
     return (
         <Layout>
@@ -109,6 +113,7 @@ export default function Register() {
                                         id="first_name"
                                         type="text"
                                         onChange={handleInputChange}
+                                        ref={fname_ref}
                                     />
                                     <p>{formError?.password}</p>
                                 </div>

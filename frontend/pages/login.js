@@ -2,12 +2,13 @@ import Head from 'next/head'
 import router from "next/router"
 import styles from "../styles/login.module.scss"
 import Layout from "../components/main/layout"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Cookies from "js-cookie";
 import Loader from "../components/main/loader"
 
 export default function Login() {
 
+    const username_ref = useRef()
     const [formError, setFormError] = useState()
     const [isLoading, setIsLoading] = useState(false)
     const [userData, setUserData] = useState({
@@ -88,6 +89,10 @@ export default function Login() {
         }
     }
 
+    useEffect(() => {
+        username_ref.current.focus()
+    }, [])
+
     return (
         <Layout>
             <Head>
@@ -107,6 +112,7 @@ export default function Login() {
                                     autoComplete={"username"}
                                     onChange={handleInputChange}
                                     onKeyDown={handleKeyDown}
+                                    ref={username_ref}
                                 />
                                 <p>{formError?.username}</p>
                             </div>
