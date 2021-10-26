@@ -11,7 +11,7 @@ After installation is complete:
 yarn start
 ```
 
-#Dont forget!
+# Dont forget!
 To include a .env file in the backend directory with:
 
 ```
