@@ -59,7 +59,7 @@ export default function FavouritesBlock() {
                     >
                       {
                         favs?.map((show) => <SwiperSlide key={show.id}>
-                          <a href={`/shows/${slugify(show.name)}`} className={styles.Fav}>
+                          <a href={`/shows/${slugify((show.name).replace(new RegExp(/\'|\./), ""))}`} className={styles.Fav}>
                             <img src={show.image.medium} />
                           </a>
                         </SwiperSlide>)
