@@ -61,10 +61,6 @@ export default function Shows({ ssr_shows }) {
     }
   }, [])
   
-  useEffect(() => {
-    console.log("USER: ", user)
-  }, [user])
-
   return (
     <Layout>
       <Head>
@@ -90,11 +86,7 @@ export default function Shows({ ssr_shows }) {
                   next={fetchData}
                   hasMore={hasMore}
                   loader={<h4>Loading...</h4>}
-                  endMessage={
-                    <p style={{ textAlign: 'center' }}>
-                      <b>---END---</b>
-                    </p>
-                  }
+                  
                 >
                   {
                     shows?.map((show, index) =>

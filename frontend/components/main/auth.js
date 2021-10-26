@@ -56,7 +56,6 @@ export const fetchWithToken = async (url, requestOptions) => {
 }
 
 const refreshToken = async () => {
-  console.log("REFRESH TOKEN")
   return await fetch(process.env.apiUrl + "auth/token/refresh/", {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },

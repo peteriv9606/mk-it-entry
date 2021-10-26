@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from "next/router"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Layout from "../../components/main/layout"
 import styles from '../../styles/singleShow.module.scss'
 import Show from '../../components/show'
@@ -53,16 +53,19 @@ export default function SingleShow({ ssr_show }) {
   }
 
   const handleRating = async (value) => {
-    const resp = await fetchWithToken(process.env.apiUrl + `favourites/${user.username}/rate`, {
-      method: "POST",
+    if(user){
+      const resp = await fetchWithToken(process.env.apiUrl + `favourites/${user.username}/rate`, {
+        method: "POST",
       body: JSON.stringify({ show_id: data.id, rating: value })
     }).then(res => res.json())
     resp?.message ? toast.error(resp.message)
-      : (toast.success(
-        value !== 0 ?
-        `Successfully gave ${data.name} a rating of ${value}!`
-        : `Successfully cleared ${data.name}'s rating!`
-        ), setRating(value))
+    : (toast.success(
+      value !== 0 ?
+      `Successfully gave ${data.name} a rating of ${value}!`
+      : `Successfully cleared ${data.name}'s rating!`
+      ), setRating(value))
+    }
+    toast.error("Please log in to rate")
   }
 
   useEffect(() => {
@@ -91,7 +94,6 @@ export default function SingleShow({ ssr_show }) {
       <div className={styles.Wrapper}>
         <div className={"Shell"}>
           <div className={styles.Inner}>
-
             {
               data.status !== 404 ?
                 <>
@@ -101,7 +103,9 @@ export default function SingleShow({ ssr_show }) {
                     setUser={setUser}
                     setNote={setNote}
                     setRating={setRating}
+                    isSingle={true}
                   />
+                  <h1>Your Review</h1>
                   <div className={styles.Rating_wrapper}>
                     <Rating
                       stars={5}

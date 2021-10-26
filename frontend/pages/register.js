@@ -64,12 +64,11 @@ export default function Register() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userData)
             })
-
             if (res.status !== 201) {
-                res.json().then(res => {
+                res.json().then(r => {
                     setIsLoading(false)
                     let err = {}
-                    res.map(error => {
+                    r.map(error => {
                         Object.entries(error).forEach(([key, value]) => {
                             err = merge(err, { [key]: value })
                         })
@@ -128,7 +127,7 @@ export default function Register() {
                                 </div>
                             </div>
                             <div className="Labeled_input">
-                                <label htmlFor="username">Username <span>*</span></label>
+                                <label htmlFor="username"><span>*</span>Username</label>
                                 <input
                                     id="username"
                                     type="text"
@@ -139,7 +138,7 @@ export default function Register() {
                             </div>
                             <div className="Nested two">
                                 <div className="Labeled_input">
-                                    <label htmlFor="password">Password <span>*</span></label>
+                                    <label htmlFor="password"><span>*</span>Password</label>
                                     <input
                                         id="password"
                                         type="password"
@@ -149,7 +148,7 @@ export default function Register() {
                                     <p>{formError?.password}</p>
                                 </div>
                                 <div className="Labeled_input">
-                                    <label htmlFor="password2">Confirm Password <span>*</span></label>
+                                    <label htmlFor="password2"><span>*</span>Confirm Password</label>
                                     <input
                                         id="password2"
                                         type="password"
@@ -160,7 +159,7 @@ export default function Register() {
                                 </div>
                             </div>
                             <div className="Labeled_input">
-                                <label htmlFor="email">E-Mail <span>*</span></label>
+                                <label htmlFor="email"><span>*</span>E-Mail</label>
                                 <input
                                     id="email"
                                     type="email"

@@ -1,56 +1,161 @@
-.Show{
-  margin: 20px 0;
+.Show {
+  margin: 20px 0 40px;
+  // i hate hardcoding, but 
+  // if no img is in DB, should maintain ratio
+  
+  min-height: 335px;
+  position: relative;
   display: flex;
+  flex-direction: column;
   column-gap: 20px;
-  >a{
-    width: 20%;
+  box-sizing: border-box;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.Image_container {
+  // img
+  margin-bottom: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  > a {
+    width: fit-content;
     overflow: hidden;
     height: auto;
     object-fit: contain;
   }
-  >div{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    >a{
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      text-decoration: none;
-      color: black;
+  @media(min-width:768px){
+    margin-bottom: 0;
+    width: 30%;
+  }
+}
+
+.Details_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media(min-width: 768px){
+    justify-content: space-between;
+  }
+}
+
+.Details {
+  margin-bottom: 20px;
+
+  > a {
+    // title
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+  }
+  > p {
+    // genres
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  > span {
+    // summary
+    font-size: 16px;
+    font-style: italic;
+    text-align: justify;
+  }
+
+  @media(min-width:768px){
+    margin-bottom: 0;
+  }
+  @media(min-width:1024px){
+    >a {
+      font-size:26px;
     }
-    >p:nth-of-type(1){
-      margin-bottom: 10px;
+    >p {
       font-size: 16px;
     }
-    >span{
-      margin-bottom: 10px;
-      font-size: 16px;
-      font-style: italic;
-      text-align: justify;
+    >span >{
+      font-size: 18px;
     }
-    >div{
-      // actions
-      height: -webkit-fill-available;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      >a{
-        width: fit-content;
-      }
-      >button{
-        padding: 5px 10px;
-        width:fit-content;
-        border-radius: 6px;
-        background-color: transparent;
-        font-size: 18px;
-      }
-      button.Add{
-        border: 1px solid rgb(171, 255, 74);
-      }
-      button.Rmv{
-        border: 1px solid rgb(255, 74, 74);
-      }
+  }
+  @media(min-width:1024px){
+    >a {
+      font-size:28px;
     }
+    >p {
+      font-size: 18px;
+    }
+    >span >{
+      font-size: 20px;
+    }
+  }
+}
+
+.Actions {
+  // actions
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > a,
+  button {
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.2;
+  }
+  > a {
+    border: 1px solid #0d47a1;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  > a:hover {
+    color: #fff;
+    background-color: #0d47a1;
+    transition: 0.3s;
+  }
+  button.Add {
+    border: 1px solid #4caf50;
+    transition: 0.3s;
+  }
+  button.Add:hover {
+    color: #fff;
+    background-color: #4caf50;
+    transition: 0.3s;
+  }
+  button.Rmv {
+    border: 1px solid #f44336;
+    transition: 0.3s;
+  }
+  button.Rmv:hover {
+    color: #fff;
+    background-color: #f44336;
+    transition: 0.3s;
+  }
+  @media(min-width:1024px){
+    justify-content: space-around;
+    >a,button{
+      font-size: 18px;
+    }
+  }
+}
+
+.Show:after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  width: 100px;
+  height: 4px;
+  background-color: #ccc;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  @media(min-width:768px){
+    display: none;
   }
 }
