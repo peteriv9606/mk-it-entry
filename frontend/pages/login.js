@@ -72,11 +72,12 @@ export default function Login() {
                 setIsLoading(false)
                 Cookies.set('access', resp.access)
                 Cookies.set('refresh', resp.refresh)
-                if (window.history.length > 1 && document.referrer.indexOf(window.location.host) !== -1) {
+                /* if (window.history.length > 1 && document.referrer.indexOf(window.location.host) !== -1) {
                     router.back();
-                  } else {
+                } else {
                     router.replace('/');
-                  }
+                } */
+                router.replace('/', '/', {shallow:false})
             }
             else {
                 // something is terribly wrong.. cant login either 500 or something else
