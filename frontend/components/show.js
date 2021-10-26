@@ -26,8 +26,8 @@ export default function Show({ show, user, setUser, setNote, setRating, isSingle
       body: JSON.stringify({ user_id: user._id, show_id: show.id })
     }).then(res => res.json())
     setUser(resp)
-    !isSingle && setNote('')
-    !isSingle && setRating(0)
+    isSingle && setNote('')
+    isSingle && setRating(0)
     toast.success(`Successfuly removed '${show.name}' from your favorites!`)
     }
     else{
