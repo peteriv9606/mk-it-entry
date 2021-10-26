@@ -5,13 +5,14 @@ const bcrypt = require('bcryptjs')
 const User = require("../models/User")
 const jwt = require("../auth/jwt")
 
-router.use((req,res,next)=>{
+router.use((req, res, next) => {
   next()
 })
 
 router.post("/register", urlEncodedParser, async (req, res) => {
   console.log("POST /register");
   var requiredFields = ["username", "password", "email"]
+  var errors = []
   for (const [key, value] of Object.entries(req.body)) {
     requiredFields.includes(key) && value ?
       requiredFields = requiredFields.filter(field => field !== key)
@@ -25,26 +26,30 @@ router.post("/register", urlEncodedParser, async (req, res) => {
     )
   }
 
-  if(!(req.body.email).match(new RegExp(/^[A-Za-z0-9]*@[A-Za-z0-9]*\.[A-Za-z0-9]+$/))){
-    return res.status(400).json({email: "Email format invalid ( expected: example@mail.com )"})
+  if (!(req.body.email).match(new RegExp(/^[A-Za-z0-9]*@[A-Za-z0-9]*\.[A-Za-z0-9]+$/))) {
+    return res.status(400).json({ email: "Email format invalid ( expected: example@mail.com )" })
   }
 
   if (await User.findOne({ username: req.body.username }) !== null) {
     //there is already a user with this username
-    return res.status(400).json({ username: "Username already taken" })
+    errors.push({ username: "Username already taken" })
   }
 
   if (await User.findOne({ email: req.body.email }) !== null) {
     //there is already a user with this email
-    return res.status(400).json({ email: "Email already taken" })
+    errors.push({ email: "Email already taken" })
   }
-
-  //user not found - create a new one
-  var user = User(req.body)
-  const salt = await bcrypt.genSalt(10)
-  user.password = await bcrypt.hash(user.password, salt)
-  const resp = await user.save()
-  res.status(201).json(resp)
+  if (errors.length === 0) {
+    //user not found - create a new one
+    var user = User(req.body)
+    const salt = await bcrypt.genSalt(10)
+    user.password = await bcrypt.hash(user.password, salt)
+    const resp = await user.save()
+    res.status(201).json(resp)
+  }else{
+    // some errors were found
+    res.status(400).json(errors)
+  }
 });
 
 router.post("/login", urlEncodedParser, async (req, res) => {
@@ -70,11 +75,11 @@ router.post("/login", urlEncodedParser, async (req, res) => {
 });
 
 router.post('/logout', jwt.logout, (req, res) => {
-  return res.status(200).json({message: "Success"})
+  return res.status(200).json({ message: "Success" })
 })
 
 router.post("/token/refresh", jwt.refreshToken, (req, res) => {
-  return res.status(200).json({access: req.access})
+  return res.status(200).json({ access: req.access })
 })
 
 module.exports = router

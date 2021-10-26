@@ -1,0 +1,40 @@
+.Inner{
+  display: flex;
+  flex-direction: column;
+}
+.Rating_wrapper{
+  margin: 20px 0;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+
+  >button{
+    margin-left: 5px;
+    padding: 5px 10px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: 0.6s;
+    color:white;
+  }
+  >button:hover:enabled{
+    transition: 0.6s;
+    background-color: rgb(200, 40, 40);
+    color:whitesmoke;
+  }
+}
+
+.Note_wrapper {
+  margin-bottom: 40px;
+  display: flex;
+  
+  >textarea{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    min-width: -webkit-fill-available;
+    min-height: 100px;
+  }
+}
