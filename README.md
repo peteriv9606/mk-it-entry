@@ -11,6 +11,13 @@ After installation is complete:
 yarn start
 ```
 
+#Dont forget!
+To include a .env file in the backend directory with:
+
+```
+MONGO_URI=<YOUR_MONGODB_URI>
+TOKEN_SECRET=<YOUR_SECRET>
+```
 
 ## FRONTEND
 
