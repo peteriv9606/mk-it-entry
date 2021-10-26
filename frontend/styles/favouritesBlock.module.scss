@@ -84,7 +84,7 @@
       width: 100%;
     }
   }
-  > div::after {
+  > div:nth-of-type(1):after {
     content: "";
     position: absolute;
     width: 50px;
